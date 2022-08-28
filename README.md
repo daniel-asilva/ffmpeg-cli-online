@@ -20,6 +20,16 @@ in order to get rid of error `Uncaught (in promise) ReferenceError: SharedArrayB
 see [https://github.com/ffmpegwasm/ffmpeg.wasm#installation](https://github.com/ffmpegwasm/ffmpeg.wasm#installation)
 
 
+#### host with HTTPS
+
+To get rid of error `... header has been ignored, because the URL's origin was untrustworthy` you need to deliver the app using HTTPS.
+
+One way you can do it is by starting the server with the certificate for your domain. Create a `certs` folder containing the certificate files specified below:
+- Certificate (usually a .crt file).
+- CA bundle/chain (usually a .ca-bundle file).
+- Private key (usually a .key file).
+
+
 ### dev
 
 1. install dependencies: `npm install`

@@ -7,6 +7,13 @@ const esbuild = require('esbuild');
 const hanlder = require('serve-handler');
 const comm = require('./esbuild-comm.js');
 
+// Load the certificate files needed for configuration.
+const httpsOptions = {
+	cert: fs.readFileSync("certs/cert.crt"),
+	ca: fs.readFileSync("certs/ca.crt"),
+	key: fs.readFileSync("certs/private.key")
+  };
+
 const config = {
 	devPort: 8000,
 	skipGz: true,
@@ -71,8 +78,8 @@ esbuild.build({
 }).then((result) => {
 	console.log('build OK:', result);
 
-	// Then start a http server on port config.devPort
-	http.createServer((req, res) => {
+	// Then start a https server on port config.devPort
+	https.createServer(httpsOptions, (req, res) => {
 		console.log('[req]', req.url, req.headers);
 
 		if (config.skipGz) delete req.headers['accept-encoding']; // skip gz
