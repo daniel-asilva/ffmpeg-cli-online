@@ -25,3 +25,10 @@ see [https://github.com/ffmpegwasm/ffmpeg.wasm#installation](https://github.com/
 1. install dependencies: `npm install`
 2. build: `npm run start`
 3. navigate to [http://127.0.0.1:8000](http://127.0.0.1:8000) in browser
+
+
+### dev on Docker
+Use the docker-compose.yml file at the root of the project:
+```
+docker-compose up --build -d
+```

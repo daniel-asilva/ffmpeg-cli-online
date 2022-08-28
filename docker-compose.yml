@@ -1,0 +1,12 @@
+version: "3.8"
+
+services:
+  ffmpeg-cli-online:
+    container_name: ffmpeg-cli-online
+    restart: unless-stopped
+    build: .
+    image: local/ffmpeg-cli-online
+    ports:
+      - 8000:8000
+    security_opt:
+      - no-new-privileges=true
